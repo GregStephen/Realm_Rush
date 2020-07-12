@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class enemySpawner : MonoBehaviour
 {
+    [Range(0.5f, 12f)]
     [SerializeField] float secondsBetweenSpawns = 2f;
     [SerializeField] EnemyMovement enemyPrefab;
     // Start is called before the first frame update
@@ -16,7 +17,7 @@ public class enemySpawner : MonoBehaviour
     {
         while(true) // forever
         {
-            print("Spawning");
+            Instantiate(enemyPrefab, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(secondsBetweenSpawns);
         }
     }
